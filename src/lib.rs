@@ -76,5 +76,22 @@ Game 5: 6 red, 1 blue, 3 green; 2 blue, 1 red, 2 green";
 
             assert_eq!(4361, day3::part1::process(content));
         }
+
+
+        #[test]
+        fn part2() {
+            let content = "467..114..
+...*......
+..35..633.
+......#...
+617*......
+.....+.58.
+..592.....
+......755.
+...$.*....
+.664.598..";
+
+            assert_eq!(467835, day3::part2::process(content));
+        }
     }
 }

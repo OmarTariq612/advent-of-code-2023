@@ -35,7 +35,6 @@ pub fn process(content: impl AsRef<str>) -> u64 {
 
                             let number =
                                 &matrix[i][start..end].into_iter().fold(0u64, |acc, ch| {
-                                    println!("acc = {}, ch = {}", acc, ch);
                                     (acc + ch.to_digit(10).unwrap() as u64) * 10
                                 }) / 10;
 

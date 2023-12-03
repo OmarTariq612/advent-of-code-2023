@@ -1,5 +1,6 @@
 pub mod day1;
 pub mod day2;
+pub mod day3;
 
 #[cfg(test)]
 mod tests {
@@ -54,6 +55,26 @@ Game 4: 1 green, 3 red, 6 blue; 3 green, 6 red; 3 green, 15 blue, 14 red
 Game 5: 6 red, 1 blue, 3 green; 2 blue, 1 red, 2 green";
 
             assert_eq!(2286, day2::part2::process(content));
+        }
+    }
+
+    mod day3 {
+        use super::super::*;
+
+        #[test]
+        fn part1() {
+            let content = "467..114..
+...*......
+..35..633.
+......#...
+617*......
+.....+.58.
+..592.....
+......755.
+...$.*....
+.664.598..";
+
+            assert_eq!(4361, day3::part1::process(content));
         }
     }
 }

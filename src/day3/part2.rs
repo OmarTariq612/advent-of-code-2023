@@ -13,7 +13,7 @@ pub fn process(content: impl AsRef<str>) -> u64 {
     matrix.push(".".repeat(cols).chars().collect());
 
     let mut visited_numbers = HashSet::new();
-    let mut from_geer_to_numbers = HashMap::new();
+    let mut from_gear_to_numbers = HashMap::new();
 
     for i in 1..rows - 1 {
         for j in 1..cols - 1 {
@@ -33,14 +33,14 @@ pub fn process(content: impl AsRef<str>) -> u64 {
                                 end += 1;
                             }
 
-                            let number =
-                                &matrix[n][start..end].into_iter().fold(0u64, |acc, ch| {
-                                    (acc + ch.to_digit(10).unwrap() as u64) * 10
-                                }) / 10;
+                            let number = &matrix[n][start..end]
+                                .into_iter()
+                                .fold(0u64, |acc, ch| (acc + ch.to_digit(10).unwrap() as u64) * 10)
+                                / 10;
 
                             if !visited_numbers.contains(&(n, start, end)) {
                                 visited_numbers.insert((n, start, end));
-                                from_geer_to_numbers
+                                from_gear_to_numbers
                                     .entry((i, j))
                                     .or_insert(Vec::new())
                                     .push(number);
@@ -52,9 +52,9 @@ pub fn process(content: impl AsRef<str>) -> u64 {
         }
     }
 
-    from_geer_to_numbers
-        .iter()
-        .filter(|&(_, value)| value.len() == 2)
-        .map(|(_, value)| value.iter().product::<u64>())
+    from_gear_to_numbers
+        .values()
+        .filter(|&value| value.len() == 2)
+        .map(|value| value.iter().product::<u64>())
         .sum()
 }
